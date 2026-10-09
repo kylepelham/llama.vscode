@@ -36,6 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
     app.architect.registerCommandSelectPreviousSuggestion(context)
     app.architect.registerLlavaVscodeModelProvider(context)
     app.architect.init()
+    app.contextSeeder.start(context)
 
     
 }

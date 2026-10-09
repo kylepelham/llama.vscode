@@ -1,5 +1,6 @@
 import {Configuration} from "./configuration";
 import {ExtraContext} from "./extra-context";
+import {ContextSeeder} from "./context-seeder";
 import {LlamaServer} from "./llama-server";
 import {LRUCache} from "./lru-cache";
 import {Architect} from "./architect";
@@ -43,6 +44,7 @@ export class Application {
     private static instance: Application;
     public configuration: Configuration;
     public extraContext: ExtraContext;
+    public contextSeeder: ContextSeeder;
     public llamaServer: LlamaServer
     public lruResultCache: LRUCache
     public architect: Architect
@@ -94,6 +96,7 @@ export class Application {
         this.configuration = new Configuration()
         this.llamaServer = new LlamaServer(this)
         this.extraContext = new ExtraContext(this)
+        this.contextSeeder = new ContextSeeder(this)
         this.lruResultCache = new LRUCache(this.configuration.max_cache_keys);
         this.architect = new Architect(this);
         this.statusbar = new Statusbar(this)
